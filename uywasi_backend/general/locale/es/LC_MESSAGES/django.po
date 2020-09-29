@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-10 19:14-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\general\models.py:18
+msgid "Date time on wich the object was created."
+msgstr ""
+
+#: .\general\models.py:23
+msgid "Date time on wich the object was last modified."
+msgstr ""
+
+#: .\general\models.py:40
+msgid "This is the animal to which this breed belongs."
+msgstr ""
+
+#: .\general\models.py:48
+msgid "This field is the name of the race."
+msgstr ""
+
+#: .\general\models.py:55
+msgid "This is a description of the race."
+msgstr ""
+
+#: .\general\models.py:61
+msgid "This image will be used as visual help."
+msgstr ""

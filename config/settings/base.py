@@ -78,10 +78,10 @@ THIRD_PARTY_APPS = [
 ]
 
 LOCAL_APPS = [
-    # "uywasi_backend.general.apps.GeneralConfig",
+    "uywasi_backend.general.apps.GeneralConfig",
     "uywasi_backend.accounts.apps.AccountsConfig",
-    # "uywasi_backend.circles.apps.CirclesConfig",
-    # "uywasi_backend.posts.apps.PostsConfig",
+    "uywasi_backend.circles.apps.CirclesConfig",
+    "uywasi_backend.posts.apps.PostsConfig",
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

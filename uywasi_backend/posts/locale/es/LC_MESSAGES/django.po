@@ -1,0 +1,129 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-05-10 19:14-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\posts\models.py:19
+msgid "This is the bread of the pet."
+msgstr ""
+
+#: .\posts\models.py:25
+msgid "This is the user owner the post."
+msgstr ""
+
+#: .\posts\models.py:32
+msgid "A post can be related to a circle, but it is not required."
+msgstr ""
+
+#: .\posts\models.py:40
+msgid ""
+"This is a name of the pet. It is optional. If you do not know the name of "
+"pet, you can leave this field blank."
+msgstr ""
+
+#: .\posts\models.py:49
+msgid "This is a description of pet, or other iformation. It is optional."
+msgstr ""
+
+#: .\posts\models.py:56
+msgid "This field represents the type of post."
+msgstr ""
+
+#: .\posts\models.py:64
+msgid "This field indicates if the post is available yet or not."
+msgstr ""
+
+#: .\posts\models.py:75
+msgid "This is a principal color of pet. It is required."
+msgstr ""
+
+#: .\posts\models.py:77 .\posts\models.py:89
+msgid "Black"
+msgstr ""
+
+#: .\posts\models.py:78 .\posts\models.py:90
+msgid "White"
+msgstr ""
+
+#: .\posts\models.py:79 .\posts\models.py:91
+msgid "Gray"
+msgstr ""
+
+#: .\posts\models.py:80 .\posts\models.py:92
+msgid "Brown"
+msgstr ""
+
+#: .\posts\models.py:81 .\posts\models.py:93
+msgid "Other"
+msgstr ""
+
+#: .\posts\models.py:85
+msgid ""
+"This is a secondary color of pet. It is required. If the pet does not have "
+"more than one color, choice the same option that color_primary."
+msgstr ""
+
+#: .\posts\models.py:97
+msgid "This is the size of pet. The options of small, medium, and big."
+msgstr ""
+
+#: .\posts\models.py:101
+msgid "Small"
+msgstr ""
+
+#: .\posts\models.py:102
+msgid "Medium"
+msgstr ""
+
+#: .\posts\models.py:103
+msgid "Big"
+msgstr ""
+
+#: .\posts\models.py:107
+msgid ""
+"This image helps for identify a pet. This field is required. If you do not "
+"have a photo you can search a photo of similar pet."
+msgstr ""
+
+#: .\posts\models.py:114 .\posts\models.py:122
+msgid "This image helps for identify a pet. This field is optional."
+msgstr ""
+
+#: .\posts\models.py:130
+msgid ""
+"This is the latitude of the location. This information will be used for "
+"contact, and for facilitate the search."
+msgstr ""
+
+#: .\posts\models.py:138
+msgid ""
+"This is the longitude of the location. This information will be used for "
+"contact, and for facilitate the search."
+msgstr ""
+
+#: .\posts\models.py:165
+msgid "This is the user who write the comment. It is required."
+msgstr ""
+
+#: .\posts\models.py:171
+msgid "This is the commented post."
+msgstr ""
+
+#: .\posts\models.py:177
+msgid "This is the content of the comment."
+msgstr ""
