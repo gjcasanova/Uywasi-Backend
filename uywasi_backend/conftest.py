@@ -1,7 +1,7 @@
 import pytest
 
-from uywasi_backend.users.models import User
-from uywasi_backend.users.tests.factories import UserFactory
+from uywasi_backend.accounts.models import User
+from uywasi_backend.accounts.tests.factories import UserFactory
 
 
 @pytest.fixture(autouse=True)

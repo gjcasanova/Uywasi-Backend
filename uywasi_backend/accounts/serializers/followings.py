@@ -2,10 +2,13 @@
 
 # Django
 from django.utils.translation import ugettext as _
+
 # Django Rest Framework
 from rest_framework import serializers
+
 # Local models
 from uywasi_backend.accounts.models import Following
+
 # Local serializers
 from uywasi_backend.accounts.serializers import UserModelSerializer
 
@@ -25,23 +28,22 @@ class FollowingModelSerializer(serializers.ModelSerializer):
         and that the following does not exists yet.
         """
         validated_data = super().validate(data)
-        request = self.context.get('request')
-        user_to = validated_data['user_to']
-        user_from = validated_data['user_from']
+        user_to = validated_data["user_to"]
+        user_from = validated_data["user_from"]
         if user_to == user_from:
             raise serializers.ValidationError(
-                _('A user cannot follow yourself.'))
-        if (Following.objects.filter(
-                user_from=user_from, user_to=user_to).exists()):
+                _("A user cannot follow yourself."))
+        if Following.objects.filter(
+                user_from=user_from, user_to=user_to).exists():
             raise serializers.ValidationError(
-                _('This following already exist.'))
+                _("This following already exist."))
         return data
 
     class Meta:
         """Meta options."""
 
         model = Following
-        fields = ('user_to', 'user_from')
+        fields = ("user_to", "user_from")
 
 
 class FollowingDetailSerializer(FollowingModelSerializer):
@@ -58,4 +60,4 @@ class FollowingDetailSerializer(FollowingModelSerializer):
     class Meta(FollowingModelSerializer.Meta):
         """Meta options. Extended FollowingModelSerializer.Meta."""
 
-        fields = FollowingModelSerializer.Meta.fields + ('created',)
+        fields = FollowingModelSerializer.Meta.fields + ("created",)

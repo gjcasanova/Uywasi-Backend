@@ -2,6 +2,7 @@
 
 # Django
 from django.contrib import admin
+
 # Local
 from uywasi_backend.general.models import Breed
 
@@ -16,15 +17,20 @@ class BreedAdmin(admin.ModelAdmin):
     fieldsets.
     """
 
-    list_display = ('name', 'animal', 'description')
-    list_filter = ('animal', 'created', 'modified')
-    search_fields = ('name',)
+    list_display = ("name", "animal", "description")
+    list_filter = ("animal", "created", "modified")
+    search_fields = ("name",)
     fieldsets = (
-        ('Breed Information', {
-            'fields': (('name',),
-                       ('animal', 'photo'),
-                       ('description'),
-                       ('created', 'modified'))
-        }),
+        (
+            "Breed Information",
+            {
+                "fields": (
+                    ("name",),
+                    ("animal", "photo"),
+                    ("description"),
+                    ("created", "modified"),
+                )
+            },
+        ),
     )
-    readonly_fields = ('created', 'modified')
+    readonly_fields = ("created", "modified")

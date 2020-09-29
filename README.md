@@ -47,11 +47,7 @@ Uywasi is a web app for lookup lost pets. This repository contains the backend p
  
     $ sudo docker-compose -f local.yml down
 
-### 3.5. Running commands on docker containers
- 
-    $ sudo docker-compose -f local.yml build
-
-### 3.6. For debugging
+### 3.5. For debugging
 
 For create a break points for debug the code:
 
@@ -61,7 +57,7 @@ Then is necessary run the django container in other console individually:
 
     $ sudo docker-compose -f local.yml run --rm --service-ports django
 
-### 3.7. For execute commands into containers
+### 3.6. For execute commands into containers
 For execute commands into containers is necessary follow this format:
 
     $ sudo docker-compose -f local.yml run --rm <image_name> <command>

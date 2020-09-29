@@ -3,6 +3,7 @@
 # Django
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+
 # Local
 from uywasi_backend.accounts.models import User, Following
 
@@ -17,26 +18,25 @@ class UserAdmin(BaseUserAdmin):
     of AbstractUser of Django.
     """
 
-    list_filter = ('created', 'modified') + BaseUserAdmin.list_filter
+    list_filter = ("created", "modified") + BaseUserAdmin.list_filter
     fieldsets = (
-        ('Profile Information', {
-         'fields': (('profile_photo'),
-                    ('phone'),
-                    ('biography'),
-                    ('created', 'modified'))
-         }),
-        ('Ubication', {
-            'fields': (('longitude'),
-                       ('latitude'))
-        }),
-        ('Verification', {
-            'fields': (('is_verified'),
-                       ('is_confirmed'))
-        }),
-        ('Identification', {'fields': ()})
+        (
+            "Profile Information",
+            {
+                "fields": (
+                    ("profile_photo"),
+                    ("phone"),
+                    ("biography"),
+                    ("created", "modified"),
+                )
+            },
+        ),
+        ("Ubication", {"fields": (("longitude"), ("latitude"))}),
+        ("Verification", {"fields": (("is_verified"), ("is_confirmed"))}),
+        ("Identification", {"fields": ()}),
     ) + BaseUserAdmin.fieldsets
 
-    readonly_fields = ('created', 'modified')
+    readonly_fields = ("created", "modified")
 
 
 @admin.register(Following)
@@ -48,15 +48,20 @@ class FollowingAdmin(admin.ModelAdmin):
     and modified the list_display, list_filter, search_fields and fieldsets.
     """
 
-    list_display = ('id', 'user_from', 'user_to', 'created')
-    list_filter = ('created', 'modified')
-    search_fields = ('user_from__username', 'user_to__username',
-                     'user_from__first_name', 'user_to__first_name',
-                     'user_from__last_name', 'user_to__last_name')
-    fieldsets = (
-        ('Following Information', {
-            'fields': (('user_from', 'user_to'),
-                       ('created', 'modified'))
-        }),
+    list_display = ("id", "user_from", "user_to", "created")
+    list_filter = ("created", "modified")
+    search_fields = (
+        "user_from__username",
+        "user_to__username",
+        "user_from__first_name",
+        "user_to__first_name",
+        "user_from__last_name",
+        "user_to__last_name",
     )
-    readonly_fields = ('created', 'modified')
+    fieldsets = (
+        (
+            "Following Information",
+            {"fields": (("user_from", "user_to"), ("created", "modified"))},
+        ),
+    )
+    readonly_fields = ("created", "modified")
