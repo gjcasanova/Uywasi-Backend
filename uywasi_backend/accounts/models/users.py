@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 from uywasi_backend.general.models import StandardModel
 
 
-class User(StandardModel, AbstractUser):
+class User(AbstractUser):
     """
     User.
 
@@ -38,6 +38,35 @@ class User(StandardModel, AbstractUser):
         max_length=150,
         blank=False,
         null=False)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
+
+    def __str__(self):
+        """Return username."""
+        return self.username
+
+    class Meta:
+        """Meta options."""
+
+        ordering = ['username']
+
+
+class UserAccount(StandardModel):
+    """
+    UserAccount.
+
+    UserAccount is a class for extends the User class fields. All instance
+    of this model is related of an User model instance.
+    """
+
+    user = models.OneToOneField(
+        help_text=_('User owner of the account. It is mandatory.'),
+        to='accounts.User',
+        on_delete=models.CASCADE,
+        blank=False,
+        null=False
+    )
 
     phone = models.CharField(
         help_text=_('Phone number for contact. It is optional.'),
@@ -82,6 +111,12 @@ class User(StandardModel, AbstractUser):
         blank=True
     )
 
+    is_active = models.BooleanField(
+        help_text=_('An user account is active by default '
+                    'but is inactive if the staff suspend this account.'),
+        default=True
+    )
+
     is_confirmed = models.BooleanField(
         help_text=_('An account is confirmed only when the '
                     'user verified his email account.'),
@@ -95,31 +130,23 @@ class User(StandardModel, AbstractUser):
     )
 
     follows = models.ManyToManyField(
-        help_text=_('The users that this user is following.'),
-        to='User',
+        help_text=_('The accounts that this account is following.'),
+        to='accounts.UserAccount',
         through='Following',
-        through_fields=('user_from', 'user_to'),
+        through_fields=('user_account_from', 'user_account_to'),
         symmetrical=False
     )
 
     @property
     def number_of_followers(self):
         """Return the number of followers."""
-        return self.user_set.all().count()
+        return self.useracount_set.all().count()
 
     @property
     def number_of_follows(self):
         """Return the number of followers."""
         return self.follows.all().count()
 
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['first_name', 'last_name', 'username']
-
     def __str__(self):
-        """Return username."""
-        return self.username
-
-    class Meta(StandardModel.Meta):
-        """Meta options. Extended from StandardModel.Meta."""
-
-        ordering = ['username']
+        """Return user username"""
+        return self.user.username

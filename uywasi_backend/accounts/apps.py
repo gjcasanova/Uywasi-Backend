@@ -12,3 +12,4 @@ class AccountsConfig(AppConfig):
     """
 
     name = 'uywasi_backend.accounts'
+    app_label = 'accounts'

@@ -5,38 +5,43 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 
 # Local
-from uywasi_backend.accounts.models import User, Following
+from uywasi_backend.accounts.models import User, UserAccount, Following
 
 
-@admin.register(User)
-class UserAdmin(BaseUserAdmin):
+class UserAccountAdmin(admin.StackedInline):
     """
-    UserAdmin.
+    UserAccountAdmin.
 
-    This class extends from UserAdmin, change the list_fiter,
-    and add the field of custom user, but conserve the fields
-    of AbstractUser of Django.
+    This class extends from admin.ModelAdmin, it is used for manage user accounts.
     """
+    model = UserAccount
+    can_delete = False
+    verbose_name_plural = 'User Account'
 
-    list_filter = ("created", "modified") + BaseUserAdmin.list_filter
     fieldsets = (
         (
-            "Profile Information",
+            "",
             {
                 "fields": (
                     ("profile_photo"),
                     ("phone"),
                     ("biography"),
-                    ("created", "modified"),
                 )
             },
         ),
         ("Ubication", {"fields": (("longitude"), ("latitude"))}),
         ("Verification", {"fields": (("is_verified"), ("is_confirmed"))}),
-        ("Identification", {"fields": ()}),
-    ) + BaseUserAdmin.fieldsets
+        ("History", {"fields": ("created", "modified")}),
+    )
 
     readonly_fields = ("created", "modified")
+
+
+@admin.register(User)
+class UserAdmin(BaseUserAdmin):
+    """User admin overrided for include UserAccount data."""
+    list_filter = ("useraccount__created", "useraccount__modified") + BaseUserAdmin.list_filter
+    inlines = (UserAccountAdmin,)
 
 
 @admin.register(Following)
@@ -48,20 +53,20 @@ class FollowingAdmin(admin.ModelAdmin):
     and modified the list_display, list_filter, search_fields and fieldsets.
     """
 
-    list_display = ("id", "user_from", "user_to", "created")
+    list_display = ("id", "user_account_from", "user_account_to", "created")
     list_filter = ("created", "modified")
     search_fields = (
-        "user_from__username",
-        "user_to__username",
-        "user_from__first_name",
-        "user_to__first_name",
-        "user_from__last_name",
-        "user_to__last_name",
+        "user_account_from__username",
+        "user_account_to__username",
+        "user_account_from__first_name",
+        "user_account_to__first_name",
+        "user_account_from__last_name",
+        "user_account_to__last_name",
     )
     fieldsets = (
         (
             "Following Information",
-            {"fields": (("user_from", "user_to"), ("created", "modified"))},
+            {"fields": (("user_account_from", "user_account_to"), ("created", "modified"))},
         ),
     )
     readonly_fields = ("created", "modified")
