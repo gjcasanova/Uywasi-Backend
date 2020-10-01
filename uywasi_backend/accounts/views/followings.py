@@ -8,8 +8,8 @@ from rest_framework.filters import OrderingFilter
 from rest_framework import mixins, viewsets, status
 # Local serializers
 from uywasi_backend.accounts.serializers import (UserModelSerializer,
-                                  FollowingModelSerializer,
-                                  FollowingDetailSerializer)
+                                                 FollowingModelSerializer,
+                                                 FollowingDetailSerializer)
 # Local models
 from uywasi_backend.accounts.models import User, Following
 # Local permissions

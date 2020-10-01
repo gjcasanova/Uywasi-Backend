@@ -1,4 +1,4 @@
 """Accounts app serializers."""
 
-from .users import *
-from .followings import *
+# from .users import *
+# from .followings import *

@@ -9,15 +9,15 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Accounts app
-    path('api/', include('uywasi_backend.accounts.urls', namespace='accounts')),
+    # path('api/', include('uywasi_backend.accounts.urls', namespace='accounts')),
 
     # Posts app
-    path('api/', include('uywasi_backend.posts.urls', namespace='posts')),
+    # path('api/', include('uywasi_backend.posts.urls', namespace='posts')),
 
-    # Circles app
-    path('api/', include('uywasi_backend.circles.urls', namespace='circles')),
+    # # Circles app
+    # path('api/', include('uywasi_backend.circles.urls', namespace='circles')),
 
-    # General app
-    path('api/', include('uywasi_backend.general.urls', namespace='general'))
+    # # General app
+    # path('api/', include('uywasi_backend.general.urls', namespace='general'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

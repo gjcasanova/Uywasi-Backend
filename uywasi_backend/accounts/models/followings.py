@@ -5,47 +5,46 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 # Local models
 from uywasi_backend.general.models import StandardModel
-from uywasi_backend.accounts.models import User
 
 
 class Following(StandardModel):
     """
     Following.
 
-    This class represents the following from an user to other user.
-    A user can follow to various users.
+    This class represents the following from an user account to other user account.
+    A user account can follow to various user accounts.
     """
 
-    user_from = models.ForeignKey(
-        help_text=_('This is a user that follow.'),
-        to=User,
+    user_account_from = models.ForeignKey(
+        help_text=_('This is an account that follow.'),
+        to='accounts.UserAccount',
         on_delete=models.CASCADE,
-        related_name='following_user_from_user'
+        related_name='following_account_from_account'
     )
 
-    user_to = models.ForeignKey(
-        help_text=_('This is a user that is followed.'),
-        to=User,
+    user_account_to = models.ForeignKey(
+        help_text=_('This is an account that is followed.'),
+        to='accounts.UserAccount',
         on_delete=models.CASCADE,
-        related_name='following_user_to_user'
+        related_name='following_account_to_account'
     )
 
     def __str__(self):
         """
         __str__.
 
-        Return an string representation formed by user_from,
-        user_to and created date.
+        Return a string representation formed by owner user of account_from,
+        owner user of account_to and created date.
         """
-        return '{} to {} at '.format(self.user_from,
-                                     self.user_to, self.created)
+        return '{} to {} at {}'.format(self.user_account_from.user,
+                                       self.user_account_to.user, self.created)
 
     class Meta(StandardModel.Meta):
         """Meta options. Extended from StandardModel.Meta."""
 
         constraints = (
             models.UniqueConstraint(
-                fields=('user_from', 'user_to'),
-                name='unique_user_from_user_to'
+                fields=('user_account_from', 'user_account_to'),
+                name='unique_user_account_from_user_account_to'
             ),
         )
